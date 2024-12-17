@@ -1,0 +1,343 @@
+/* Variables de color */
+:root {
+    --owner-color: #14c3eb;
+    --admin-color: #ff4654;
+    --dev-color: #00ff9d;
+    --mod-color: #4287f5;
+    --helper-color: #ff9d00;
+    --online-color: #43b581;
+    --idle-color: #faa61a;
+    --dnd-color: #f04747;
+}
+
+/* Mejorar visibilidad en modo oscuro */
+[data-theme="dark"] {
+    --card-bg: #1a1a1a;
+    --text: #ffffff;
+    --text-secondary: #a0a0a0;
+}
+
+/* Ajustes para eliminar bordes blancos */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.team-container {
+    margin: 0;  /* Eliminar margen */
+    padding: 0;  /* Eliminar padding */
+    min-height: calc(100vh - 60px);  /* Ajustar altura considerando navbar */
+    background-color: var(--bg-color);
+    position: relative;
+    overflow-x: hidden;
+    border: none;  /* Eliminar bordes */
+    padding-top: 60px;  /* Espacio para el navbar */
+}
+
+.hero {
+    text-align: center;
+    margin: 0;  /* Eliminar margen */
+    padding: 3rem 1rem;  /* Ajustar padding */
+    position: relative;
+    z-index: 1;
+    background-color: var(--bg-color);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: #14c3eb;
+    text-shadow: 0 0 15px rgba(20, 195, 235, 0.3);
+    position: relative;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #14c3eb;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(20, 195, 235, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.team-section {
+    padding: 0 2rem;  /* Añadir padding horizontal */
+    margin-bottom: 3rem;
+}
+
+.team-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #14c3eb;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-shadow: 0 0 10px rgba(20, 195, 235, 0.3);
+}
+
+.team-section h2 i {
+    color: #14c3eb;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.team-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--card-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+}
+
+.team-card.owner::before { background: var(--owner-color); }
+.team-card.admin::before { background: var(--admin-color); }
+.team-card.dev::before { background: var(--dev-color); }
+.team-card.mod::before { background: var(--mod-color); }
+.team-card.helper::before { background: var(--helper-color); }
+
+.avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--card-border);
+}
+
+.status {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--card-bg);
+}
+
+.status.online { background-color: var(--online-color); }
+.status.idle { background-color: var(--idle-color); }
+.status.dnd { background-color: var(--dnd-color); }
+
+.team-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #14c3eb;
+}
+
+.team-card .discord {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.team-card .role {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: rgba(20, 195, 235, 0.1);
+}
+
+.owner .role { 
+    background: rgba(20, 195, 235, 0.1);
+    color: #14c3eb;
+}
+
+.admin .role {
+    background: rgba(255, 70, 84, 0.1);
+    color: var(--admin-color);
+}
+
+.dev .role {
+    background: rgba(0, 255, 157, 0.1);
+    color: var(--dev-color);
+}
+
+.mod .role {
+    background: rgba(66, 135, 245, 0.1);
+    color: var(--mod-color);
+}
+
+.helper .role {
+    background: rgba(255, 157, 0, 0.1);
+    color: var(--helper-color);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Animaciones */
+@keyframes titleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-container {
+        padding-top: 60px;
+    }
+
+    .team-section {
+        padding: 0 1rem;
+    }
+
+    .hero {
+        margin-bottom: 2rem;
+        padding: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .team-section {
+        margin-bottom: 2rem;
+        padding: 0 0.5rem;
+    }
+
+    .team-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .team-card {
+        padding: 1.5rem;
+        margin: 0 auto;
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .team-card .discord {
+        font-size: 0.8rem;
+    }
+
+    .team-card .role {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Ajustes específicos para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .team-container {
+        padding: 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .team-card {
+        padding: 1rem;
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Mejorar el fondo en modo oscuro */
+[data-theme="dark"] .team-container {
+    background-color: #0a0a0a;
+}
+
+/* Añadir un sutil gradiente al fondo */
+.team-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(20, 195, 235, 0.02),
+        rgba(20, 195, 235, 0)
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ajustar navbar para eliminar línea */
+.navbar {
+    border: none;
+    box-shadow: none;
+}
+
+/* Mejorar visibilidad del título en modo oscuro */
+[data-theme="dark"] .hero h1 {
+    color: #14c3eb;
+    text-shadow: 0 0 20px rgba(20, 195, 235, 0.4);
+}
+
+/* Eliminar gradiente del título y usar color sólido */
+.hero h1 {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+
+/* Ajuste para modo oscuro */
+[data-theme="dark"] .hero p {
+    color: #14c3eb;
+    opacity: 0.9;
+    text-shadow: 0 0 15px rgba(20, 195, 235, 0.3);
+}
